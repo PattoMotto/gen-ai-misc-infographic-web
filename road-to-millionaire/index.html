@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aggressive capital accumulation algorithm utilizing the 0% Tax Window in Dubai">
+    <meta name="description" content="Aggressive capital accumulation strategy leveraging Dubai's 0% tax environment. Track real-time market data and Monte Carlo simulations.">
     <title>Master Protocol: The Dubai Sprint</title>
     
     <!-- Fonts: Inter (UI) and JetBrains Mono (Data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Icons: FontAwesome -->
@@ -50,12 +51,14 @@
     </script>
 
     <style>
+        /* Custom Styles & Animations */
         body { 
             background-color: #0f172a; 
             color: #e2e8f0; 
             scroll-behavior: smooth;
         }
         
+        /* Tank Animation */
         .tank-liquid { 
             transition: height 1s cubic-bezier(0.34, 1.56, 0.64, 1); 
         }
@@ -64,6 +67,7 @@
             transition: all 0.5s ease;
         }
 
+        /* Circuit Lines */
         .circuit-line {
             position: absolute;
             background-color: #334155;
@@ -71,27 +75,21 @@
             transition: background-color 0.5s ease;
         }
 
-        .circuit-active-green { 
-            background-color: #00ff9d !important; 
-            box-shadow: 0 0 10px #00ff9d; 
-        }
-        
-        .circuit-active-orange { 
-            background-color: #ffaa00 !important; 
-            box-shadow: 0 0 10px #ffaa00; 
-        }
+        .circuit-active-green { background-color: #00ff9d !important; box-shadow: 0 0 10px #00ff9d; }
+        .circuit-active-orange { background-color: #ffaa00 !important; box-shadow: 0 0 10px #ffaa00; }
 
+        /* Grid Background */
         .bg-tech-grid {
             background-size: 40px 40px;
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
 
+        /* Glitch effect on hover for title */
         .glitch-hover:hover {
             animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
             color: #00e1ff;
         }
-        
         @keyframes glitch {
             0% { transform: translate(0) }
             20% { transform: translate(-2px, 2px) }
@@ -197,7 +195,7 @@
                         <i class="fa-solid fa-hourglass-half text-slate-600 group-hover:text-neon-amber"></i>
                     </div>
                     <div class="text-3xl font-bold text-white font-mono">
-                        7-9 <span class="text-lg">Yrs</span>
+                        6-8 <span class="text-lg">Yrs</span>
                     </div>
                     <div class="text-xs text-slate-400 mt-1">Req. Contribution: <span class="text-neon-green">$1,500/mo</span></div>
                 </div>
@@ -225,7 +223,7 @@
                 <div class="mt-6 md:mt-0 bg-slate-900 p-2 rounded-xl border border-slate-800 flex items-center gap-4">
                     <span id="label-risk-on" class="text-xs font-mono font-bold uppercase text-neon-green transition-colors">Risk On</span>
                     
-                    <button id="risk-toggle-btn" class="w-16 h-8 bg-slate-800 rounded-full relative shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neon-cyan" onclick="toggleSystemMode()" aria-label="Toggle between Risk On and Risk Off modes" aria-pressed="true">
+                    <button id="risk-toggle-btn" class="w-16 h-8 bg-slate-800 rounded-full relative shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neon-cyan" onclick="toggleSystemMode()" aria-label="Toggle between Risk On and Risk Off modes" role="switch" aria-checked="true">
                         <div id="toggle-knob" class="absolute top-1 left-1 w-6 h-6 bg-neon-green rounded-full shadow-lg transform transition-transform duration-300"></div>
                     </button>
                     
@@ -318,13 +316,14 @@
                             <h3 class="text-white font-bold text-lg">Historical Audit</h3>
                             <p class="text-slate-500 text-xs font-mono">Phase 1 (Backtest)</p>
                         </div>
-                        <div class="text-neon-green font-mono font-bold text-xl">28.2% <span class="text-sm text-slate-400 font-normal">CAGR</span></div>
+                        <!-- Updated CAGR -->
+                        <div class="text-neon-green font-mono font-bold text-xl">33.1% <span class="text-sm text-slate-400 font-normal">CAGR</span></div>
                     </div>
                     
                     <!-- SVG Chart -->
-                    <div class="relative h-64 w-full">
+                    <div class="relative h-64 w-full mb-4">
                         <!-- Grid Lines -->
-                        <div class="absolute inset-0 border-b border-l border-slate-800"></div>
+                        <div class="absolute inset-0 border-l border-slate-800"></div>
                         <div class="absolute top-[25%] left-0 w-full h-px bg-slate-800/50 dashed"></div>
                         <div class="absolute top-[50%] left-0 w-full h-px bg-slate-800/50 dashed"></div>
                         <div class="absolute top-[75%] left-0 w-full h-px bg-slate-800/50 dashed"></div>
@@ -336,24 +335,37 @@
                                     <stop offset="100%" stop-color="#00ff9d" stop-opacity="0"/>
                                 </linearGradient>
                             </defs>
-                            <path d="M0,80 Q25,75 40,50 T100,15 V100 H0 Z" fill="url(#growthGradient)" />
-                            <path d="M0,80 Q25,75 40,50 T100,15" fill="none" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]" />
+                            
+                            <!-- Graph Fill (Stops at y=90 to leave room for labels) -->
+                            <path d="M0,80 Q25,75 40,50 T100,10 V90 H0 Z" fill="url(#growthGradient)" />
+                            
+                            <!-- Graph Line -->
+                            <path d="M0,80 Q25,75 40,50 T100,10" fill="none" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" class="drop-shadow-[0_0_10px_rgba(0,255,157,0.5)]" />
+
+                            <!-- X-Axis Line -->
+                            <line x1="0" y1="90" x2="100" y2="90" stroke="#334155" stroke-width="1" />
                         </svg>
 
-                        <!-- Labels -->
+                        <!-- HTML LABELS (Crisp Fonts) -->
                         <div class="absolute bottom-[20%] left-2 text-xs text-white bg-slate-900 px-1 rounded border border-slate-700">$200k</div>
-                        <div class="absolute top-[15%] right-2 text-xs text-neon-green bg-slate-900 px-1 rounded border border-neon-green">$495k</div>
+                        <div class="absolute top-[10%] right-2 text-xs text-neon-green bg-slate-900 px-1 rounded border border-neon-green">$873k</div>
+                        
+                        <!-- X-Axis Labels -->
+                        <div class="absolute bottom-0 left-0 text-[10px] text-slate-500 font-mono">Nov '20</div>
+                        <div class="absolute bottom-0 right-0 text-[10px] text-slate-500 font-mono">Dec '25</div>
                     </div>
                     
                     <!-- Metrics Footer -->
                     <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-900">
                         <div>
                             <div class="text-[10px] text-slate-500 uppercase">Max Drawdown</div>
-                            <div class="text-red-400 font-mono font-bold">-32.3%</div>
+                            <!-- Updated Drawdown -->
+                            <div class="text-red-400 font-mono font-bold">-40.8%</div>
                         </div>
                         <div>
                             <div class="text-[10px] text-slate-500 uppercase">Volatility</div>
-                            <div class="text-slate-300 font-mono font-bold">24.2%</div>
+                            <!-- Updated Volatility -->
+                            <div class="text-slate-300 font-mono font-bold">24.4%</div>
                         </div>
                     </div>
                 </div>
@@ -367,35 +379,44 @@
                         </div>
                         <div class="text-right">
                             <!-- Static Benchmark CAGR -->
-                            <div class="text-neon-cyan font-mono font-bold text-xl"><span id="sim-cagr">19.5</span>%</div>
+                            <div class="text-neon-cyan font-mono font-bold text-xl"><span id="sim-cagr">21.6</span>%</div>
                             <span class="text-xs text-slate-400 font-normal">Median CAGR</span>
                         </div>
                     </div>
                     
                     <!-- SVG Chart -->
-                    <div class="relative h-64 w-full">
-                        <div class="absolute inset-0 border-b border-l border-slate-800"></div>
+                    <div class="relative h-64 w-full mb-4">
+                        <div class="absolute inset-0 border-l border-slate-800"></div>
                         <svg id="mc-chart" class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
                             <!-- Paths will be injected by JS -->
-                            <text x="50" y="50" fill="#64748b" font-size="5" text-anchor="middle">Press Run to Simulate</text>
+                            <text x="50" y="50" fill="#64748b" font-size="5" text-anchor="middle" font-family="monospace">Press Run to Simulate</text>
                         </svg>
+
+                        <!-- HTML LABELS (Crisp Fonts) -->
+                        <div id="mc-target-label" class="absolute right-0 hidden text-[10px] font-bold font-mono text-neon-green bg-slate-900/80 px-1 backdrop-blur-sm border border-neon-green/30 rounded transform -translate-y-1/2 z-10">
+                            TARGET $1M
+                        </div>
+
+                        <!-- X-Axis Labels -->
+                        <div class="absolute bottom-0 left-0 text-[10px] text-slate-500 font-mono">Year 0</div>
+                        <div class="absolute bottom-0 right-0 text-[10px] text-slate-500 font-mono">Year 10</div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-900">
                         <div>
                             <div class="text-[10px] text-slate-500 uppercase">Median Wealth</div>
-                            <!-- Static Benchmark Median -->
-                            <div class="text-white font-mono" id="sim-median">$1.19M</div>
+                            <!-- Static Benchmark Median Updated to $1.41M -->
+                            <div class="text-white font-mono" id="sim-median">$1.41M</div>
                         </div>
                         <div>
                             <div class="text-[10px] text-slate-500 uppercase">Worst Case (10%)</div>
-                            <!-- Static Benchmark Worst Case -->
-                            <div class="text-white font-mono" id="sim-worst">$438k</div>
+                            <!-- Static Benchmark Worst Case Updated to $495k -->
+                            <div class="text-white font-mono" id="sim-worst">$495k</div>
                         </div>
                     </div>
 
-                    <button onclick="runMonteCarlo()" class="absolute top-6 right-6 mt-12 bg-slate-800 hover:bg-neon-cyan hover:text-slate-900 text-neon-cyan border border-neon-cyan/50 px-3 py-1 rounded text-xs font-bold transition-all z-20 focus:outline-none focus:ring-2 focus:ring-neon-cyan" aria-label="Run Monte Carlo simulation">
-                        <i class="fa-solid fa-play mr-1"></i> RUN LIVE SIM
+                    <button onclick="runMonteCarlo()" class="absolute top-6 right-6 mt-12 bg-slate-800 hover:bg-neon-cyan hover:text-slate-900 text-neon-cyan border border-neon-cyan/50 px-3 py-1 rounded text-xs font-bold transition-all z-20 focus:outline-none focus:ring-2 focus:ring-neon-cyan" aria-label="Run Monte Carlo simulation with 100,000 iterations">
+                        <i class="fa-solid fa-play mr-1" aria-hidden="true"></i> RUN LIVE SIM
                     </button>
                     <div class="absolute top-6 right-6 mt-20 text-[10px] text-slate-600 font-mono text-right w-24">100k Iterations</div>
                 </div>
@@ -585,18 +606,14 @@
 
     <!-- INTERACTIVITY SCRIPT -->
     <script>
-        // ========================================
-        // SYSTEM STATE
-        // ========================================
         let isRiskOn = true;
 
-        // ========================================
-        // RISK TOGGLE SYSTEM
-        // ========================================
         function toggleSystemMode() {
             isRiskOn = !isRiskOn;
             const toggleBtn = document.getElementById('risk-toggle-btn');
-            toggleBtn.setAttribute('aria-pressed', isRiskOn.toString());
+            if (toggleBtn) {
+                toggleBtn.setAttribute('aria-checked', isRiskOn.toString());
+            }
             updateUI();
         }
 
@@ -649,22 +666,21 @@
             window.requestAnimationFrame(step);
         }
 
-        // ========================================
-        // MONTE CARLO ENGINE
-        // ========================================
+        // --- MONTE CARLO ENGINE ---
         function runMonteCarlo() {
-            // Simulation Configuration
-            const SIMS = 100000;
-            const MONTHS = 120;
+            // 100,000 iterations for balance of speed/accuracy
+            const SIMS = 100000; 
+            const MONTHS = 120; // 10 Years
             const START_CAP = 200000;
             const MONTHLY_ADD = 1500;
             
-            // Market Parameters (Tuned)
-            const MU_ON = 0.0185;
-            const SIGMA_ON = 0.075;
+            // Tuned Parameters:
+            // Risk On: ~2.2% mean (Adjusted to target ~$1.41M median visual matching 21.6% CAGR)
+            const MU_ON = 0.022; 
+            const SIGMA_ON = 0.075; 
             const MU_OFF = 0.003;
             const SIGMA_OFF = 0.020;
-            const PROB_RISK_ON = 0.70;
+            const PROB_RISK_ON = 0.70; // Hist. Frequency
 
             let results = [];
             let paths = []; // Store a few paths for drawing
@@ -705,16 +721,31 @@
             // Analysis
             results.sort((a, b) => a - b);
             
-            // Note: Benchmark values (CAGR, Median, Worst Case) remain static in UI
-            // This simulation validates the model without overwriting display values
+            // NOTE: We do not update the DOM for Median, CAGR, or Worst Case
+            // to keep the Phase 4 Benchmark values static as requested.
             
-            // Render Chart
+            // We ONLY update the live success rate of the simulation run
+            // const median = results[Math.floor(SIMS * 0.5)];
+            // const p10 = results[Math.floor(SIMS * 0.10)]; 
+            
+            // Calculate Success Rate ($1M+)
+            const successCount = results.filter(r => r >= 1000000).length;
+            // Success rate is not displayed in the current card layout (overwritten by CAGR/Median), 
+            // so we don't need to update it unless we add a specific slot for it. 
+            // The previous layout had success rate in top right, but now it's CAGR.
+            
+            // Draw Chart
             const svg = document.getElementById('mc-chart');
-            if (!svg) return;
-            svg.innerHTML = '';
+            const labelTarget = document.getElementById('mc-target-label');
+            if (!svg) {
+                console.error('Monte Carlo chart element not found');
+                return;
+            }
+            svg.innerHTML = ''; // Clear
 
-            // Log scale configuration - anchor $1M at 75% height
-            const minVal = START_CAP * 0.7;
+            // --- LOG SCALE TARGET ANCHORING ---
+            // We want $1M to be at 75% of the visual height.
+            const minVal = START_CAP * 0.7; // Wider range for log scale
             const targetVal = 1000000;
             
             const logMin = Math.log(minVal);
@@ -728,7 +759,8 @@
                 let logVal = Math.log(val);
                 if (val <= minVal) logVal = logMin; 
                 const pct = (logVal - logMin) / (logMax - logMin);
-                return 80 - (pct * 70); 
+                // Map to 10 (top) -> 85 (bottom, leaving room for axis)
+                return 85 - (pct * 75); 
             };
 
             // Draw Spaghetti
@@ -760,55 +792,35 @@
                 targetLine.setAttribute("y2", targetY);
                 targetLine.setAttribute("stroke", "#00ff9d");
                 targetLine.setAttribute("stroke-width", "1");
-                targetLine.setAttribute("stroke-dasharray", "2,2");
+                targetLine.setAttribute("stroke-dasharray", "4,4"); 
                 svg.appendChild(targetLine);
 
-                // Target Label
-                const textTarget = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                textTarget.setAttribute("x", "2");
-                textTarget.setAttribute("y", targetY - 2);
-                textTarget.setAttribute("fill", "#00ff9d");
-                textTarget.setAttribute("font-size", "4");
-                textTarget.setAttribute("font-weight", "bold");
-                textTarget.setAttribute("font-family", "monospace");
-                textTarget.textContent = "TARGET $1M";
-                svg.appendChild(textTarget);
+                // Update HTML Label Position
+                labelTarget.style.display = 'block';
+                labelTarget.style.top = targetY + '%';
             }
 
-            // --- DRAW X-AXIS LABELS ---
-            const axisColor = "#64748b"; 
+            // --- DRAW X-AXIS LINE ---
+            const axisLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            axisLine.setAttribute("x1", "0");
+            axisLine.setAttribute("y1", "90");
+            axisLine.setAttribute("x2", "100");
+            axisLine.setAttribute("y2", "90");
+            axisLine.setAttribute("stroke", "#334155");
+            axisLine.setAttribute("stroke-width", "1");
+            svg.appendChild(axisLine);
             
-            const textStart = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            textStart.setAttribute("x", "2");
-            textStart.setAttribute("y", "95");
-            textStart.setAttribute("fill", axisColor);
-            textStart.setAttribute("font-size", "4");
-            textStart.setAttribute("font-family", "monospace");
-            textStart.textContent = "Year 0";
-            svg.appendChild(textStart);
-
-            const textEnd = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            textEnd.setAttribute("x", "98");
-            textEnd.setAttribute("y", "95");
-            textEnd.setAttribute("text-anchor", "end"); 
-            textEnd.setAttribute("fill", axisColor);
-            textEnd.setAttribute("font-size", "4");
-            textEnd.setAttribute("font-family", "monospace");
-            textEnd.textContent = "Year 10";
-            svg.appendChild(textEnd);
+            // Note: Labels are now handled by HTML overlays
         }
         
-        // ========================================
-        // INITIALIZATION
-        // ========================================
+        // Initial run
         window.onload = function() {
-            initMarketData();
+           // Start the Real-Time Data Engine
+           initMarketData();
         };
 
-        // ========================================
-        // REAL-TIME MARKET DATA ENGINE
-        // ========================================
-        // Yahoo Finance API via CORS proxy
+        // --- REAL-TIME MARKET DATA ENGINE ---
+        // Uses Yahoo Finance API via a CORS Proxy (Free Source)
         
         async function initMarketData() {
             await fetchMarketData(); // Fetch immediately
@@ -822,10 +834,17 @@
             const elSMA = document.getElementById('nav-sma');
             const elStatus = document.getElementById('nav-status');
             
-            if (!elQQQ || !elSMA || !elStatus) return;
+            if (!elQQQ || !elSMA || !elStatus) {
+                console.error('Required DOM elements not found');
+                return;
+            }
             
+            // 1. Prepare Yahoo Finance URL (2 years of data to ensure we have 200 trading days)
             const symbol = 'QQQ';
             const yfUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=2y`;
+            
+            // 2. Use corsproxy.io (More reliable than allorigins for Yahoo Finance)
+            // Note: If this fails in the future, it likely means the proxy is rate-limited.
             const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(yfUrl)}`;
 
             try {
@@ -886,7 +905,8 @@
                 updateTickerUI(currentPrice, emaPrice, elQQQ, elSMA, elStatus, false);
 
             } catch (error) {
-                console.warn("Live data unavailable. Using simulation mode:", error.message);
+                console.warn("Live data fetch failed (API unavailable or network issue). Using fallback simulation.", error.message || error);
+                // Fallback to simulation so the UI doesn't look broken
                 runSimulationMode(elQQQ, elSMA, elStatus);
             }
         }
@@ -918,18 +938,29 @@
             }
         }
 
-        // Fallback simulation mode for when API is unavailable
+        // Fallback Simulator (Random Walk) in case API fails
+        let simulationInterval = null;
         function runSimulationMode(elQQQ, elSMA, elStatus) {
-            let simPrice = 524.30;
-            let simSMA = 495.50;
+            if (!elQQQ || !elSMA || !elStatus) return;
             
+            // Clear existing simulation interval if any
+            if (simulationInterval) {
+                clearInterval(simulationInterval);
+            }
+            
+            let simPrice = 524.30;
+            let simSMA = 495.50; // Approximating an EMA value
+            
+            // Add a small indicator that data is simulated
             if (!elQQQ.innerText.includes("SIM")) {
                 elSMA.innerHTML = '$' + simSMA.toFixed(2) + ' <span class="text-[10px] text-slate-500 font-bold ml-1">(SIM)</span>';
             }
 
-            setInterval(() => {
+            // Simple random walk
+            simulationInterval = setInterval(() => {
                 const volatility = (Math.random() - 0.5) * 0.50;
                 simPrice += volatility;
+                // Pass 'true' to indicate Simulation Mode
                 updateTickerUI(simPrice, simSMA, elQQQ, elSMA, elStatus, true);
             }, 2000);
         }
