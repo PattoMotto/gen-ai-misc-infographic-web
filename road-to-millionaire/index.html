@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aggressive capital accumulation algorithm utilizing the 0% Tax Window in Dubai">
     <title>Master Protocol: The Dubai Sprint</title>
     
     <!-- Fonts: Inter (UI) and JetBrains Mono (Data) -->
@@ -49,14 +50,12 @@
     </script>
 
     <style>
-        /* Custom Styles & Animations */
         body { 
             background-color: #0f172a; 
             color: #e2e8f0; 
             scroll-behavior: smooth;
         }
         
-        /* Tank Animation */
         .tank-liquid { 
             transition: height 1s cubic-bezier(0.34, 1.56, 0.64, 1); 
         }
@@ -65,7 +64,6 @@
             transition: all 0.5s ease;
         }
 
-        /* Circuit Lines */
         .circuit-line {
             position: absolute;
             background-color: #334155;
@@ -73,21 +71,27 @@
             transition: background-color 0.5s ease;
         }
 
-        .circuit-active-green { background-color: #00ff9d !important; box-shadow: 0 0 10px #00ff9d; }
-        .circuit-active-orange { background-color: #ffaa00 !important; box-shadow: 0 0 10px #ffaa00; }
+        .circuit-active-green { 
+            background-color: #00ff9d !important; 
+            box-shadow: 0 0 10px #00ff9d; 
+        }
+        
+        .circuit-active-orange { 
+            background-color: #ffaa00 !important; 
+            box-shadow: 0 0 10px #ffaa00; 
+        }
 
-        /* Grid Background */
         .bg-tech-grid {
             background-size: 40px 40px;
             mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
 
-        /* Glitch effect on hover for title */
         .glitch-hover:hover {
             animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
             color: #00e1ff;
         }
+        
         @keyframes glitch {
             0% { transform: translate(0) }
             20% { transform: translate(-2px, 2px) }
@@ -123,7 +127,8 @@
                     <!-- Ticker Data -->
                     <div class="flex gap-4 border-r border-slate-700 pr-6 mr-2">
                         <span class="flex items-center gap-1">QQQ: <span id="nav-qqq" class="text-white font-bold tracking-tight">LOADING...</span></span>
-                        <span class="flex items-center gap-1">200SMA: <span id="nav-sma" class="text-slate-500">--</span></span>
+                        <!-- Updated Label to EMA -->
+                        <span class="flex items-center gap-1">200 EMA: <span id="nav-sma" class="text-slate-500">--</span></span>
                     </div>
 
                     <!-- Dynamic Status -->
@@ -220,7 +225,7 @@
                 <div class="mt-6 md:mt-0 bg-slate-900 p-2 rounded-xl border border-slate-800 flex items-center gap-4">
                     <span id="label-risk-on" class="text-xs font-mono font-bold uppercase text-neon-green transition-colors">Risk On</span>
                     
-                    <button id="risk-toggle-btn" class="w-16 h-8 bg-slate-800 rounded-full relative shadow-inner transition-colors duration-300 focus:outline-none" onclick="toggleSystemMode()">
+                    <button id="risk-toggle-btn" class="w-16 h-8 bg-slate-800 rounded-full relative shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-neon-cyan" onclick="toggleSystemMode()" aria-label="Toggle between Risk On and Risk Off modes" aria-pressed="true">
                         <div id="toggle-knob" class="absolute top-1 left-1 w-6 h-6 bg-neon-green rounded-full shadow-lg transform transition-transform duration-300"></div>
                     </button>
                     
@@ -389,7 +394,7 @@
                         </div>
                     </div>
 
-                    <button onclick="runMonteCarlo()" class="absolute top-6 right-6 mt-12 bg-slate-800 hover:bg-neon-cyan hover:text-slate-900 text-neon-cyan border border-neon-cyan/50 px-3 py-1 rounded text-xs font-bold transition-all z-20">
+                    <button onclick="runMonteCarlo()" class="absolute top-6 right-6 mt-12 bg-slate-800 hover:bg-neon-cyan hover:text-slate-900 text-neon-cyan border border-neon-cyan/50 px-3 py-1 rounded text-xs font-bold transition-all z-20 focus:outline-none focus:ring-2 focus:ring-neon-cyan" aria-label="Run Monte Carlo simulation">
                         <i class="fa-solid fa-play mr-1"></i> RUN LIVE SIM
                     </button>
                     <div class="absolute top-6 right-6 mt-20 text-[10px] text-slate-600 font-mono text-right w-24">100k Iterations</div>
@@ -397,8 +402,7 @@
             </div>
         </div>
     </section>
-
-    <!-- SECTION 3: THE ALGORITHM (Circuit Breaker) -->
+            <!-- SECTION 3: THE ALGORITHM (Circuit Breaker) -->
     <section class="py-24 bg-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
         
@@ -420,7 +424,8 @@
                 <!-- LOGIC GATE -->
                 <div class="bg-slate-800 border-2 border-neon-cyan px-8 py-6 rounded-lg shadow-glow-cyan w-64 text-center z-10 relative">
                     <div class="text-xs text-neon-cyan uppercase font-mono mb-2">Logic Gate</div>
-                    <div class="text-lg font-bold text-white">Is P > 200 SMA?</div>
+                    <!-- Updated Logic Text -->
+                    <div class="text-lg font-bold text-white">Is P > 200 EMA?</div>
                 </div>
 
                 <!-- BRANCHING CONNECTORS -->
@@ -482,7 +487,8 @@
                         </div>
                         <div class="flex items-start gap-3">
                             <span class="bg-blue-900/30 text-blue-400 text-xs px-2 py-1 rounded">AI AGENT</span>
-                            <p class="text-slate-300 text-sm">Monitor QQQ vs 200 SMA. Alert only on crossover.</p>
+                            <!-- Updated Instruction -->
+                            <p class="text-slate-300 text-sm">Monitor QQQ vs 200 EMA. Alert only on crossover.</p>
                         </div>
                     </div>
                 </div>
@@ -501,7 +507,8 @@
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white">2</div>
-                            <p class="text-white">Check Signal (QQQ Price vs SMA).</p>
+                            <!-- Updated Instruction -->
+                            <p class="text-white">Check Signal (QQQ Price vs EMA).</p>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-xs font-bold text-white">3</div>
@@ -542,11 +549,13 @@
                         <ul class="text-sm text-slate-300 mt-2 space-y-2">
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-arrow-down text-neon-amber text-xs"></i>
-                                <span>If QQQ &lt; SMA: <span class="text-neon-amber font-bold">Go Risk Off</span></span>
+                                <!-- Updated Logic -->
+                                <span>If QQQ &lt; EMA: <span class="text-neon-amber font-bold">Go Risk Off</span></span>
                             </li>
                             <li class="flex items-center gap-2">
                                 <i class="fa-solid fa-arrow-up text-neon-green text-xs"></i>
-                                <span>If QQQ &gt; SMA: <span class="text-neon-green font-bold">Buy the Dip</span></span>
+                                <!-- Updated Logic -->
+                                <span>If QQQ &gt; EMA: <span class="text-neon-green font-bold">Buy the Dip</span></span>
                             </li>
                         </ul>
                     </div>
@@ -576,11 +585,18 @@
 
     <!-- INTERACTIVITY SCRIPT -->
     <script>
+        // ========================================
+        // SYSTEM STATE
+        // ========================================
         let isRiskOn = true;
 
-        // ... existing toggleSystemMode code ...
+        // ========================================
+        // RISK TOGGLE SYSTEM
+        // ========================================
         function toggleSystemMode() {
             isRiskOn = !isRiskOn;
+            const toggleBtn = document.getElementById('risk-toggle-btn');
+            toggleBtn.setAttribute('aria-pressed', isRiskOn.toString());
             updateUI();
         }
 
@@ -620,6 +636,7 @@
         }
 
         function animateValue(obj, start, end, duration) {
+            if (!obj) return;
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
@@ -632,21 +649,22 @@
             window.requestAnimationFrame(step);
         }
 
-        // --- MONTE CARLO ENGINE ---
+        // ========================================
+        // MONTE CARLO ENGINE
+        // ========================================
         function runMonteCarlo() {
-            // 100,000 iterations for balance of speed/accuracy
-            const SIMS = 100000; 
-            const MONTHS = 120; // 10 Years
+            // Simulation Configuration
+            const SIMS = 100000;
+            const MONTHS = 120;
             const START_CAP = 200000;
             const MONTHLY_ADD = 1500;
             
-            // Tuned Parameters:
-            // Risk On: ~1.85% mean (Adjusted to target ~$1.19M median visual)
-            const MU_ON = 0.0185; 
-            const SIGMA_ON = 0.075; 
+            // Market Parameters (Tuned)
+            const MU_ON = 0.0185;
+            const SIGMA_ON = 0.075;
             const MU_OFF = 0.003;
             const SIGMA_OFF = 0.020;
-            const PROB_RISK_ON = 0.70; // Hist. Frequency
+            const PROB_RISK_ON = 0.70;
 
             let results = [];
             let paths = []; // Store a few paths for drawing
@@ -687,26 +705,16 @@
             // Analysis
             results.sort((a, b) => a - b);
             
-            // NOTE: We do not update the DOM for Median, CAGR, or Worst Case
-            // to keep the Phase 4 Benchmark values static as requested.
+            // Note: Benchmark values (CAGR, Median, Worst Case) remain static in UI
+            // This simulation validates the model without overwriting display values
             
-            // We ONLY update the live success rate of the simulation run
-            // const median = results[Math.floor(SIMS * 0.5)];
-            // const p10 = results[Math.floor(SIMS * 0.10)]; 
-            
-            // Calculate Success Rate ($1M+)
-            const successCount = results.filter(r => r >= 1000000).length;
-            // Success rate is not displayed in the current card layout (overwritten by CAGR/Median), 
-            // so we don't need to update it unless we add a specific slot for it. 
-            // The previous layout had success rate in top right, but now it's CAGR.
-            
-            // Draw Chart
+            // Render Chart
             const svg = document.getElementById('mc-chart');
-            svg.innerHTML = ''; // Clear
+            if (!svg) return;
+            svg.innerHTML = '';
 
-            // --- LOG SCALE TARGET ANCHORING ---
-            // We want $1M to be at 75% of the visual height.
-            const minVal = START_CAP * 0.7; // Wider range for log scale
+            // Log scale configuration - anchor $1M at 75% height
+            const minVal = START_CAP * 0.7;
             const targetVal = 1000000;
             
             const logMin = Math.log(minVal);
@@ -790,14 +798,17 @@
             svg.appendChild(textEnd);
         }
         
-        // Initial run
+        // ========================================
+        // INITIALIZATION
+        // ========================================
         window.onload = function() {
-           // Start the Real-Time Data Engine
-           initMarketData();
+            initMarketData();
         };
 
-        // --- REAL-TIME MARKET DATA ENGINE ---
-        // Uses Yahoo Finance API via a CORS Proxy (Free Source)
+        // ========================================
+        // REAL-TIME MARKET DATA ENGINE
+        // ========================================
+        // Yahoo Finance API via CORS proxy
         
         async function initMarketData() {
             await fetchMarketData(); // Fetch immediately
@@ -811,12 +822,10 @@
             const elSMA = document.getElementById('nav-sma');
             const elStatus = document.getElementById('nav-status');
             
-            // 1. Prepare Yahoo Finance URL (2 years of data to ensure we have 200 trading days)
+            if (!elQQQ || !elSMA || !elStatus) return;
+            
             const symbol = 'QQQ';
             const yfUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=2y`;
-            
-            // 2. Use corsproxy.io (More reliable than allorigins for Yahoo Finance)
-            // Note: If this fails in the future, it likely means the proxy is rate-limited.
             const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(yfUrl)}`;
 
             try {
@@ -831,7 +840,6 @@
                 let currentPrice = result.meta.regularMarketPrice;
                 if (!currentPrice) {
                     const quotes = result.indicators.quote[0].close;
-                    // Find last non-null value
                     for (let i = quotes.length - 1; i >= 0; i--) {
                         if (quotes[i] !== null) {
                             currentPrice = quotes[i];
@@ -840,27 +848,45 @@
                     }
                 }
 
-                // 4. Calculate 200-Day SMA
+                // 4. Calculate 200-Day EMA (Exponential Moving Average)
+                // Formula: EMA_today = (Price_today * k) + (EMA_yesterday * (1-k))
+                // k = 2 / (N + 1)
+                
                 const closes = result.indicators.quote[0].close;
-                // Filter out null values (common in data feeds)
                 const validCloses = closes.filter(c => c !== null);
                 
-                let smaPrice = 0;
+                let emaPrice = 0;
+                
                 if (validCloses.length >= 200) {
-                    const last200 = validCloses.slice(-200);
-                    const sum = last200.reduce((acc, price) => acc + price, 0);
-                    smaPrice = sum / 200;
+                    // Step 1: Initialize with SMA of the first 200 points in our dataset (The Seed)
+                    // We need enough historical data before "today" to let the EMA converge.
+                    // Since we fetched 2 years (~500 points), this works well.
+                    
+                    const first200 = validCloses.slice(0, 200);
+                    let sum = first200.reduce((acc, val) => acc + val, 0);
+                    let prevEma = sum / 200;
+                    
+                    // Step 2: Calculate EMA for the remaining points up to today
+                    const k = 2 / (200 + 1);
+                    
+                    for (let i = 200; i < validCloses.length; i++) {
+                        const price = validCloses[i];
+                        // EMA Formula
+                        prevEma = (price * k) + (prevEma * (1 - k));
+                    }
+                    
+                    emaPrice = prevEma;
+                    
                 } else {
                     // Fallback if not enough data
-                    smaPrice = currentPrice * 0.95; 
+                    emaPrice = currentPrice * 0.95; 
                 }
 
                 // 5. Update UI
-                updateTickerUI(currentPrice, smaPrice, elQQQ, elSMA, elStatus, false);
+                updateTickerUI(currentPrice, emaPrice, elQQQ, elSMA, elStatus, false);
 
             } catch (error) {
-                console.warn("Live data fetch failed (likely CORS or Proxy issue). Using fallback simulation.", error);
-                // Fallback to simulation so the UI doesn't look broken
+                console.warn("Live data unavailable. Using simulation mode:", error.message);
                 runSimulationMode(elQQQ, elSMA, elStatus);
             }
         }
@@ -892,21 +918,18 @@
             }
         }
 
-        // Fallback Simulator (Random Walk) in case API fails
+        // Fallback simulation mode for when API is unavailable
         function runSimulationMode(elQQQ, elSMA, elStatus) {
             let simPrice = 524.30;
             let simSMA = 495.50;
             
-            // Add a small indicator that data is simulated
-            if(!elQQQ.innerText.includes("SIM")) {
-                 elSMA.innerHTML = '$' + simSMA.toFixed(2) + ' <span class="text-[10px] text-slate-500 font-bold ml-1">(SIM)</span>';
+            if (!elQQQ.innerText.includes("SIM")) {
+                elSMA.innerHTML = '$' + simSMA.toFixed(2) + ' <span class="text-[10px] text-slate-500 font-bold ml-1">(SIM)</span>';
             }
 
-            // Simple random walk
             setInterval(() => {
                 const volatility = (Math.random() - 0.5) * 0.50;
                 simPrice += volatility;
-                // Pass 'true' to indicate Simulation Mode
                 updateTickerUI(simPrice, simSMA, elQQQ, elSMA, elStatus, true);
             }, 2000);
         }
