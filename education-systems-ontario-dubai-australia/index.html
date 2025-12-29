@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Systems: Ontario vs. Dubai vs. Australia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome (Icons via Text Classes) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Styling */
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #1e293b; }
+
+        /* Chart Container - Responsive & Constrained */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Let grid handle width */
+            height: 300px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Card Hover Effects */
+        .hover-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .hover-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- HERO SECTION -->
+    <header class="bg-slate-900 text-white p-8 md:p-16 shadow-xl relative overflow-hidden">
+        <div class="relative z-10 max-w-7xl mx-auto text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Education Systems Compared</h1>
+            <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">A comprehensive analysis of public and private pathways from <span class="text-amber-400 font-bold">Age 3</span> to University.</p>
+            
+            <!-- Region Badges -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="bg-indigo-600 px-6 py-3 rounded-lg shadow-lg border border-indigo-400">
+                    <div class="text-xs uppercase tracking-wider opacity-75">Canada</div>
+                    <div class="font-bold text-lg">Ontario Public</div>
+                </div>
+                <div class="bg-amber-600 px-6 py-3 rounded-lg shadow-lg border border-amber-400">
+                    <div class="text-xs uppercase tracking-wider opacity-75">Dubai</div>
+                    <div class="font-bold text-lg">UK + IB Private</div>
+                </div>
+                <div class="bg-emerald-600 px-6 py-3 rounded-lg shadow-lg border border-emerald-400">
+                    <div class="text-xs uppercase tracking-wider opacity-75">Australia</div>
+                    <div class="font-bold text-lg">Public (State)</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto p-4 md:p-8 space-y-12">
+
+        <!-- SECTION 1: THE EARLY START (AGE 3-4) -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-slate-800 p-6 text-white flex items-center justify-between">
+                <h2 class="text-2xl font-bold"><i class="fas fa-baby-carriage mr-3"></i>The Early Years Gap (Age 3-5)</h2>
+                <span class="bg-amber-500 text-xs font-bold px-3 py-1 rounded text-slate-900">Critical Difference</span>
+            </div>
+            
+            <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Ontario -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-indigo-700 font-bold text-lg mb-2">Ontario</h3>
+                    <div class="bg-indigo-50 rounded-lg p-4 mb-2">
+                        <span class="block text-3xl font-bold text-slate-300 mb-1">Age 4</span>
+                        <span class="text-sm font-semibold text-indigo-800">Junior Kindergarten (JK)</span>
+                    </div>
+                    <p class="text-sm text-slate-500"><strong>Age 3 is Private Daycare.</strong> The public system formally invites children at Age 4. It is play-based and optional but widely attended.</p>
+                </div>
+
+                <!-- Dubai -->
+                <div class="text-center md:text-left relative">
+                    <div class="absolute -top-4 -right-4 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg border border-amber-200">Earliest Start</div>
+                    <h3 class="text-amber-700 font-bold text-lg mb-2">Dubai (UK)</h3>
+                    <div class="bg-amber-50 rounded-lg p-4 mb-2 border-l-4 border-amber-500">
+                        <span class="block text-3xl font-bold text-amber-600 mb-1">Age 3</span>
+                        <span class="text-sm font-semibold text-amber-900">FS1 (Foundation Stage 1)</span>
+                    </div>
+                    <p class="text-sm text-slate-500"><strong>Formal Schooling.</strong> Children wear uniforms and attend "Big School" campus. Focus on early literacy and numeracy begins gently but earlier.</p>
+                </div>
+
+                <!-- Australia -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-emerald-700 font-bold text-lg mb-2">Australia</h3>
+                    <div class="bg-emerald-50 rounded-lg p-4 mb-2">
+                        <span class="block text-3xl font-bold text-slate-300 mb-1">Age 5</span>
+                        <span class="text-sm font-semibold text-emerald-800">Prep / Foundation</span>
+                    </div>
+                    <p class="text-sm text-slate-500"><strong>Age 3-4 is Preschool.</strong> Often separate centres (Kindergartens). State primary school typically starts at Age 5.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GRADE MAPPING TABLE -->
+        <section>
+            <div class="mb-4">
+                <h2 class="text-2xl font-bold text-slate-800">Full Grade Comparison (Age 3 - 18)</h2>
+                <p class="text-slate-500 text-sm">Mapping the different naming conventions across the three systems.</p>
+            </div>
+            <div class="overflow-x-auto bg-white rounded-xl shadow border border-slate-200">
+                <table class="w-full text-left text-sm whitespace-nowrap md:whitespace-normal">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-600 uppercase text-xs tracking-wider">
+                            <th class="p-4 border-b">Student Age</th>
+                            <th class="p-4 border-b text-indigo-700 font-bold">Ontario (Canada)</th>
+                            <th class="p-4 border-b text-amber-700 font-bold">Dubai (UK Curriculum)</th>
+                            <th class="p-4 border-b text-emerald-700 font-bold">Australia (Public)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <!-- Age 3-4 -->
+                        <tr class="bg-amber-50/50">
+                            <td class="p-4 font-bold text-slate-700">3 - 4 Years</td>
+                            <td class="p-4 text-slate-400 italic">Daycare (Private)</td>
+                            <td class="p-4 font-bold text-amber-700 border-l-4 border-amber-400">FS1 (Foundation Stage 1)</td>
+                            <td class="p-4 text-slate-400 italic">3YO Kinder / Early Learning</td>
+                        </tr>
+                        <!-- Age 4-5 -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700">4 - 5 Years</td>
+                            <td class="p-4 font-bold text-indigo-700 border-l-4 border-indigo-400">Junior Kindergarten (JK)</td>
+                            <td class="p-4 font-bold text-slate-700">FS2 (Foundation Stage 2)</td>
+                            <td class="p-4 text-slate-500">Preschool / 4YO Kinder</td>
+                        </tr>
+                        <!-- Age 5-6 -->
+                        <tr class="bg-emerald-50/50">
+                            <td class="p-4 font-bold text-slate-700">5 - 6 Years</td>
+                            <td class="p-4 text-slate-700">Senior Kindergarten (SK)</td>
+                            <td class="p-4 text-slate-700">Year 1</td>
+                            <td class="p-4 font-bold text-emerald-700 border-l-4 border-emerald-400">Prep / Foundation / Kindy</td>
+                        </tr>
+                        <!-- Primary Block -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700">6 - 11 Years</td>
+                            <td class="p-4">Grade 1 - 5</td>
+                            <td class="p-4">Year 2 - 6</td>
+                            <td class="p-4">Year 1 - 6</td>
+                        </tr>
+                        <!-- Secondary Block -->
+                        <tr>
+                            <td class="p-4 font-bold text-slate-700">11 - 16 Years</td>
+                            <td class="p-4">Grade 6 - 10</td>
+                            <td class="p-4">Year 7 - 11 <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded ml-2 font-bold">GCSEs</span></td>
+                            <td class="p-4">Year 7 - 10</td>
+                        </tr>
+                        <!-- Senior Block -->
+                        <tr class="bg-slate-50">
+                            <td class="p-4 font-bold text-slate-700">16 - 18 Years</td>
+                            <td class="p-4 font-bold text-indigo-700">Grade 11 - 12 (OSSD)</td>
+                            <td class="p-4 font-bold text-amber-700">Year 12 - 13 (IB Diploma)</td>
+                            <td class="p-4 font-bold text-emerald-700">Year 11 - 12 (HSC/VCE)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 3: UNIVERSITY & OUTCOMES -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Chart Side -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">University Acceptance Index</h3>
+                    <p class="text-xs text-slate-500">Perception of diploma rigour by admissions officers in different regions.</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="uniAcceptanceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Analysis Side -->
+            <div class="space-y-4">
+                <div class="hover-card bg-white p-5 rounded-xl border-l-4 border-indigo-500 shadow-sm">
+                    <h4 class="font-bold text-indigo-800 text-lg">Ontario (OSSD)</h4>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Pros:</strong> Modular system allows mark maximization. Best for Canadian Universities. Flexible "Top 6" average calculation.</p>
+                    <p class="text-sm text-slate-400 mt-2"><i class="fas fa-exclamation-triangle mr-1"></i> Global unis may view it as less rigorous than IB without AP courses.</p>
+                </div>
+
+                <div class="hover-card bg-white p-5 rounded-xl border-l-4 border-amber-500 shadow-sm">
+                    <h4 class="font-bold text-amber-800 text-lg">Dubai (IB Diploma)</h4>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Pros:</strong> The "Gold Standard". Advanced credit in US. Highly respected in UK. Develops massive resilience.</p>
+                    <p class="text-sm text-slate-400 mt-2"><i class="fas fa-exclamation-triangle mr-1"></i> Extremely high workload. 45-point scale is unforgiving.</p>
+                </div>
+
+                <div class="hover-card bg-white p-5 rounded-xl border-l-4 border-emerald-500 shadow-sm">
+                    <h4 class="font-bold text-emerald-800 text-lg">Australia (ATAR)</h4>
+                    <p class="text-sm text-slate-600 mt-1"><strong>Pros:</strong> Transparent state-wide ranking. Strong pathways to AU/Asian universities.</p>
+                    <p class="text-sm text-slate-400 mt-2"><i class="fas fa-exclamation-triangle mr-1"></i> "Scaling" system can punish students in "easier" subjects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FINANCIAL & LEARNING FOCUS -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Cost Analysis -->
+            <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Cost of Education</h3>
+                <p class="text-xs text-slate-500 mb-4">Estimated cumulative tuition (Age 3-18).</p>
+                
+                <!-- Simple Stat Blocks -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <span class="text-sm font-semibold text-indigo-700">Ontario (Public)</span>
+                        <span class="text-sm font-bold text-slate-800">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <span class="text-sm font-semibold text-emerald-700">Australia (Public)</span>
+                        <span class="text-sm font-bold text-slate-800">~$1,500</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-2">
+                        <span class="text-sm font-semibold text-amber-700">Dubai (Private)</span>
+                        <span class="text-sm font-bold text-slate-800">~$400,000+</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4 h-40">
+                    <canvas id="costChart"></canvas>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-2 text-center">*Dubai cost high due to 15 years of private fees (start age 3).</p>
+            </div>
+
+            <!-- Skills Radar -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-800 mb-2">The "Student Shape"</h3>
+                <p class="text-xs text-slate-500 mb-4">What qualities does each system prioritize?</p>
+                <div class="chart-container">
+                    <canvas id="skillsRadar"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-slate-400 text-sm py-8">
+            <p>&copy; 2025 Education Analysis | Data based on generalized system archetypes.</p>
+            <p class="text-xs mt-1">Ontario (Public Board) | Dubai (KHDA Rated Outstanding/Very Good Private) | Australia (State Government Schools)</p>
+        </footer>
+
+    </main>
+
+    <!-- CHART CONFIGURATION -->
+    <script>
+        // Global Chart Settings
+        Chart.defaults.font.family = "'Poppins', sans-serif";
+        Chart.defaults.color = '#64748b';
+        Chart.defaults.scale.grid.color = '#f1f5f9';
+
+        // Tooltip Helper
+        const tooltipConfig = {
+            backgroundColor: '#1e293b',
+            titleFont: { size: 13, weight: 'bold' },
+            padding: 10,
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // 1. UNIVERSITY ACCEPTANCE (Grouped Bar)
+        const ctxUni = document.getElementById('uniAcceptanceChart').getContext('2d');
+        new Chart(ctxUni, {
+            type: 'bar',
+            data: {
+                labels: [['North', 'America'], ['UK &', 'Europe'], ['Asia', 'Pacific'], ['Middle', 'East']],
+                datasets: [
+                    { label: 'Ontario', data: [98, 60, 50, 60], backgroundColor: '#4338ca', borderRadius: 4 },
+                    { label: 'Dubai (IB)', data: [92, 95, 85, 95], backgroundColor: '#d97706', borderRadius: 4 }, // Amber-600
+                    { label: 'Australia', data: [70, 75, 95, 70], backgroundColor: '#059669', borderRadius: 4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' }, tooltip: tooltipConfig },
+                scales: { y: { beginAtZero: true, max: 100, ticks: { display: false } }, x: { grid: { display: false } } }
+            }
+        });
+
+        // 2. SKILLS RADAR
+        const ctxSkills = document.getElementById('skillsRadar').getContext('2d');
+        new Chart(ctxSkills, {
+            type: 'radar',
+            data: {
+                labels: ['Exam Resilience', 'Critical Thinking', 'Rote Learning', 'Sports/Outdoors', 'Creative Arts', 'Early Literacy'],
+                datasets: [
+                    {
+                        label: 'Dubai (UK/IB)',
+                        data: [95, 90, 60, 70, 65, 95], // High early literacy (Age 3 start), high exams
+                        borderColor: '#d97706', backgroundColor: 'rgba(217, 119, 6, 0.2)', borderWidth: 2
+                    },
+                    {
+                        label: 'Ontario',
+                        data: [40, 70, 30, 65, 85, 60], // Lower exams, high arts/creativity
+                        borderColor: '#4338ca', backgroundColor: 'rgba(67, 56, 202, 0.2)', borderWidth: 2
+                    },
+                    {
+                        label: 'Australia',
+                        data: [75, 75, 45, 95, 65, 50], // Very high sports, moderate exams
+                        borderColor: '#059669', backgroundColor: 'rgba(5, 150, 105, 0.2)', borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { r: { suggestedMin: 0, suggestedMax: 100, pointLabels: { font: { size: 11 } } } },
+                plugins: { legend: { position: 'bottom' }, tooltip: tooltipConfig }
+            }
+        });
+
+        // 3. COST CHART (Vertical Bar - Simplified)
+        const ctxCost = document.getElementById('costChart').getContext('2d');
+        new Chart(ctxCost, {
+            type: 'bar',
+            data: {
+                labels: ['ON', 'AU', 'Dubai'],
+                datasets: [{
+                    label: 'Cost Scale',
+                    data: [1, 5, 100], // Visual representation of the massive gap
+                    backgroundColor: ['#4338ca', '#059669', '#d97706'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                scales: { x: { display: false }, y: { grid: { display: false } } }
+            }
+        });
+    </script>
+</body>
+</html>
